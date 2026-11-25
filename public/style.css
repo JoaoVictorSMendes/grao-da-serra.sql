@@ -1,0 +1,195 @@
+:root {
+  --creme: #FAF7F2;
+  --borda: #E6DFD5;
+  --cafe: #3E2723;
+  --terracota: #C86D51;
+  --verde: #3d7a4f;
+  --amarelo: #E8B93C;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--creme);
+  color: var(--cafe);
+  font-family: Inter, 'Segoe UI', sans-serif;
+  font-size: 15px;
+}
+
+.topo {
+  background: var(--cafe);
+  color: #fff;
+  padding: 14px 32px 0;
+}
+
+.topo h1 { margin: 0 0 12px; font-size: 22px; font-weight: 600; }
+.topo h1 span { color: var(--terracota); }
+
+.abas { display: flex; gap: 4px; }
+
+.aba {
+  background: transparent;
+  color: #d7c9c3;
+  border: none;
+  padding: 10px 22px;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+}
+
+.aba:hover { color: #fff; }
+.aba.ativa { background: var(--creme); color: var(--cafe); font-weight: 600; }
+
+main { max-width: 1100px; margin: 0 auto; padding: 28px 24px 60px; }
+
+.oculto { display: none !important; }
+
+.card {
+  background: #fff;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+
+.card h2 { margin: 0 0 16px; font-size: 17px; }
+
+.destaque { color: var(--terracota); }
+
+.grade { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.grade .card { margin-bottom: 0; }
+.grade { margin-bottom: 20px; }
+
+.linha { display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap; margin-bottom: 16px; }
+
+label { display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600; }
+
+select, input {
+  padding: 9px 12px;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  background: var(--creme);
+  color: var(--cafe);
+  font-size: 15px;
+  min-width: 200px;
+}
+
+input[type=number] { min-width: 120px; }
+
+.btn {
+  background: var(--cafe);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.btn:hover { background: #5a3a33; }
+
+.btn-remover {
+  background: transparent;
+  color: var(--terracota);
+  border: 1px solid var(--terracota);
+  padding: 4px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-remover:hover { background: var(--terracota); color: #fff; }
+
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 10px 8px; text-align: left; border-bottom: 1px solid var(--borda); }
+th { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: #7a645d; }
+tr:last-child td { border-bottom: none; }
+.num { text-align: right; }
+
+.rodape-pedido {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 18px;
+  font-size: 17px;
+}
+
+.resumo { border-left: 5px solid var(--verde); }
+.resumo p { margin: 6px 0; }
+
+.filtros { display: flex; gap: 8px; margin-bottom: 16px; }
+
+.filtro {
+  background: #fff;
+  border: 1px solid var(--borda);
+  color: var(--cafe);
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.filtro.ativa { background: var(--terracota); border-color: var(--terracota); color: #fff; }
+
+.categoria-titulo {
+  margin: 24px 0 12px;
+  font-size: 16px;
+  color: var(--terracota);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+.itens-cardapio { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+
+.produto {
+  background: #fff;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.produto.esgotado { opacity: .5; }
+.produto .nome { font-weight: 600; }
+.produto .preco { font-size: 17px; }
+
+.badge {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge.esgotado { background: #b3261e; color: #fff; }
+.badge.repor { background: #fbe9b0; color: #7a5a00; }
+.badge.pago { background: #d6ecdc; color: #1f5a31; }
+.badge.aberto { background: #fbe9b0; color: #7a5a00; }
+.badge.cancelado { background: #f3d4cc; color: #8a2d1a; }
+
+.toast {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 16px 24px;
+  text-align: center;
+  font-weight: 600;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .25);
+}
+
+.toast.erro { background: #b3261e; }
+.toast.sucesso { background: var(--verde); }
+
+.vazio { color: #8c776f; text-align: center; padding: 18px; }
+
+@media (max-width: 800px) {
+  .grade { grid-template-columns: 1fr; }
+  .topo { padding: 12px 16px 0; }
+  main { padding: 20px 12px 50px; }
+}

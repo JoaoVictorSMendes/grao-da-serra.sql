@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Empório & Café Grão da Serra</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="toast" class="toast oculto" role="alert" aria-live="assertive"></div>
+
+  <header class="topo">
+    <h1>Empório &amp; Café <span>Grão da Serra</span></h1>
+    <nav class="abas">
+      <button class="aba ativa" data-aba="cardapio">Cardápio</button>
+      <button class="aba" data-aba="pedido">Novo Pedido</button>
+      <button class="aba" data-aba="pedidos">Pedidos</button>
+      <button class="aba" data-aba="gerencia">Gerência</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="aba-cardapio" class="painel">
+      <div id="cardapio"></div>
+    </section>
+
+    <section id="aba-pedido" class="painel oculto">
+      <div class="card">
+        <h2>Abrir pedido</h2>
+        <div class="linha">
+          <label>Cliente
+            <select id="sel-cliente"></select>
+          </label>
+          <label>Atendente
+            <select id="sel-funcionario"></select>
+          </label>
+          <button id="btn-abrir" class="btn">Abrir Pedido</button>
+        </div>
+      </div>
+
+      <div id="area-pedido" class="card oculto">
+        <h2>Pedido <span id="num-pedido" class="destaque"></span></h2>
+        <div class="linha">
+          <label>Produto
+            <select id="sel-produto"></select>
+          </label>
+          <label>Quantidade
+            <input type="number" id="inp-qtd" min="1" value="1">
+          </label>
+          <button id="btn-adicionar" class="btn">Adicionar</button>
+        </div>
+
+        <table>
+          <thead>
+            <tr><th>Produto</th><th class="num">Qtd.</th><th class="num">Preço unit.</th><th></th></tr>
+          </thead>
+          <tbody id="itens-pedido"></tbody>
+        </table>
+
+        <div class="rodape-pedido">
+          <div>Total parcial: <strong id="total-parcial">R$ 0,00</strong></div>
+          <button id="btn-finalizar" class="btn">Finalizar Pedido</button>
+        </div>
+      </div>
+
+      <div id="resumo-pedido" class="card resumo oculto"></div>
+    </section>
+
+    <section id="aba-pedidos" class="painel oculto">
+      <div class="filtros">
+        <button class="filtro ativa" data-status="">Todos</button>
+        <button class="filtro" data-status="ABERTO">ABERTO</button>
+        <button class="filtro" data-status="PAGO">PAGO</button>
+        <button class="filtro" data-status="CANCELADO">CANCELADO</button>
+      </div>
+      <div class="card">
+        <table>
+          <thead>
+            <tr>
+              <th>Nº</th><th>Data</th><th>Status</th><th>Cliente</th><th>Atendente</th>
+              <th class="num">Itens</th><th class="num">Bruto</th><th class="num">Desc.</th><th class="num">Total</th>
+            </tr>
+          </thead>
+          <tbody id="tab-pedidos"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="aba-gerencia" class="painel oculto">
+      <div class="grade">
+        <div class="card">
+          <h2>Produtos para Repor</h2>
+          <table>
+            <thead>
+              <tr><th>Produto</th><th>Categoria</th><th class="num">Estoque</th><th class="num">Mínimo</th><th class="num">Faltam</th></tr>
+            </thead>
+            <tbody id="tab-repor"></tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <h2>Vendas por Categoria</h2>
+          <table>
+            <thead>
+              <tr><th>Categoria</th><th class="num">Unidades</th><th class="num">Faturamento</th></tr>
+            </thead>
+            <tbody id="tab-vendas"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Reajuste de Preços</h2>
+        <div class="linha">
+          <label>Categoria
+            <select id="sel-categoria"></select>
+          </label>
+          <label>Percentual (%)
+            <input type="number" id="inp-percentual" step="0.01" value="10">
+          </label>
+          <button id="btn-reajustar" class="btn">Aplicar reajuste</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Histórico de Preços</h2>
+        <table>
+          <thead>
+            <tr><th>Data</th><th>Produto</th><th class="num">Preço antigo</th><th class="num">Preço novo</th><th>Usuário</th></tr>
+          </thead>
+          <tbody id="tab-historico"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="api.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
